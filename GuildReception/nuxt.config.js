@@ -38,6 +38,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Build configuration
@@ -48,5 +49,10 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  styleResources: {
+    scss: [
+      '~/assets/scss/foundation/_main.scss'
+    ]
   }
 }

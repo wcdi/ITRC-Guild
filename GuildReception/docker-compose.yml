@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nuxt:
+    build: .
+    command: yarn start
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - '80:3000'

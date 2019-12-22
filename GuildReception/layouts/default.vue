@@ -1,8 +1,19 @@
 <template>
   <div>
+    <guildHeader />
     <nuxt />
   </div>
 </template>
+
+<script>
+import guildHeader from "~/components/guildHeader.vue";
+
+export default {
+  components:{
+    guildHeader
+  }
+}
+</script>
 
 <style>
 html {

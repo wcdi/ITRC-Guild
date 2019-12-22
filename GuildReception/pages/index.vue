@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 7.4rem;">
+  <div>
     <div class="mainTitleBoxBackground">
       <div class="mainTitleBox">
         <h1 class="mainTitleText">🔥Guild System🔥</h1>
@@ -9,13 +9,6 @@
       <span style="color:#f00;">お知らせ‼︎</span> 進捗率がとてもよくありません。早く作ってしまいましょう。つか、ここのお知らせって何書いて良いのかよくわら感よなぁ。本当に。だらだら書いているからこれで良いのかな。
     </marquee>
     <ranking />
-    <div class="tabBar">
-      <nuxt-link to="/">ホーム</nuxt-link>
-      <nuxt-link to="/order">クエスト一覧</nuxt-link>
-      <nuxt-link to="/mypage">マイページ</nuxt-link>
-      <nuxt-link to="/myorder">クエスト管理</nuxt-link>
-      <nuxt-link to="/help">ヘルプ</nuxt-link>
-    </div>
   </div>
 </template>
 
@@ -47,9 +40,9 @@ export default {
         &::before {
           background-color: rgba(0, 0, 0, 0.5);
           position: absolute;
-          top: 0;
+          top: 10vh;
           right: 0;
-          bottom: 30vh;
+          bottom: 20vh;
           left: 0;
           content: " ";
         }
@@ -60,7 +53,7 @@ export default {
     }
   }
   &Info {
-    padding: 2.2rem 1rem;
+    padding: 2.7rem 1rem;
     background: whitesmoke; /*背景色*/
     border-left: double 7px #4ec4d3; /*左線*/
     border-right: double 7px #4ec4d3;

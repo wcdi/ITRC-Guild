@@ -1,142 +1,129 @@
 <template>
-  <div>
-    <div v-for="(item, index) in contents" :key="index" class="mypageStatusBox">
-      <div>
-        <img :src="item.image" />
+  <div class="mypageBackground">
+    <div class="mypageContent">
+      <div class="mypageContentImageBox">
+        <img
+          class="mypageContentImage"
+          src="https://ca.slack-edge.com/TH9SKRH3N-UK9R8FE3F-5fe3cf7bfcaf-512"
+        />
       </div>
-      <div>
-        <h2>{{item.name}}</h2>
-        <div class="mypageJobBox">
-          <div class="mypageJob">
-            <p>得意</p>
-            <job :mainJob="item.mainJob" />
-          </div>
-          <div class="mypageJob">
-            <p>装備可</p>
-            <job :job="item.job" />
+      <div class="mypageContentInfo">
+        <p class="mypageATitle">
+          称号: <span class="mypageATitleText">Guild Master</span>
+        </p>
+        <div class="mypageRank">
+          <p>ランク: <span class="mypageRankText">歴戦のPythoner</span></p>
+          <div class="experienceValueBar">
+            <div class="experienceValue"></div>
           </div>
         </div>
-        <p>戦闘力: {{item.point}}</p>
-        <div>
-          <div class="mypagePointInfoBox">
-            <div class="mypagePointInfo">
-              <p class="mypagePointInfoName">物攻</p>
-              <p class="mypagePointInfoNumber">{{physicalAttack}}</p>
-            </div>
-            <div class="mypagePointInfo">
-              <p class="mypagePointInfoName">物防</p>
-              <p class="mypagePointInfoNumber">{{physicalDefense}}</p>
-            </div>
-          </div>
-          <div class="mypagePointInfoBox">
-            <div class="mypagePointInfo">
-              <p class="mypagePointInfoName">魔攻</p>
-              <p class="mypagePointInfoNumber">{{magicAttack}}</p>
-            </div>
-            <div class="mypagePointInfo">
-              <p class="mypagePointInfoName">魔防</p>
-              <p class="mypagePointInfoNumber">{{magicDefense}}</p>
-            </div>
-          </div>
+        <p class="mypageContentName">
+          名前: <span class="mypageContentNameStyle">medjed</span>
+        </p>
+        <p>一言コメント</p>
+        <div class="mypageContentComment">
+          <p>
+            我が生涯に一片の悔い無し
+          </p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import job from "~/components/mypage/job.vue";
-
-export default {
-  components: {
-    job
-  },
-  data() {
-    return {
-      contents: [
-        {
-          name: "nanoka",
-          image:
-            "https://ca.slack-edge.com/TH9SKRH3N-UKCJAKEA2-a1f927f2a579-512",
-          mainJob: "front",
-          job: [
-            {
-              name: "front"
-            },
-            {
-              name: "backend"
-            },
-            {
-              name: "infra"
-            },
-            {
-              name: "securyty"
-            }
-          ],
-          point: "2000"
-        }
-      ],
-      physicalAttack: "",
-      physicalDefense: "",
-      magicAttack: "",
-      magicDefense: ""
-    };
-  },
-  mounted() {
-    let randRange = (min, max) =>
-      Math.floor(Math.random() * (max - min + 1) + min);
-    this.physicalAttack = randRange(1, this.contents[0].point);
-    this.physicalDefense = randRange(
-      1,
-      this.contents[0].point - this.physicalAttack
-    );
-    this.magicAttack = randRange(
-      1,
-      this.contents[0].point - this.physicalAttack - this.physicalDefense
-    );
-    this.magicDefense =
-      this.contents[0].point -
-      this.physicalAttack -
-      this.physicalDefense -
-      this.magicAttack;
-  }
-};
-</script>
-
-
 <style lang="scss" scoped>
 .mypage {
-  &Status {
-    &Box {
-      display: flex;
+  &Background {
+    background-color: #444;
+    @media screen and (min-width: 980px) {
+      height: 90vh;
     }
   }
-  &Job {
+  &Content {
     display: flex;
-    align-items: center;
-    &Box {
-      display: flex;
-      border-bottom: 1px solid;
+    padding: 5rem 0;
+    @media screen and (max-width: 979px) {
+      flex-direction: column;
+      padding: 1rem;
     }
-  }
-  &Point {
+    justify-content: space-around;
+    /deep/ p {
+      color: #fff;
+    }
     &Info {
       display: flex;
-      align-items: center;
-      &Box{
-        display: flex;
-      }
-      &Name{
-        background-color: #734e30;
-        color: #fff;
-        padding: 1rem;
-      }
-      &Number{
-        background-color:#90623c;
-        color: #fff;
-        padding: 1rem;
+      flex-direction: column;
+      @media screen and (min-width: 980px) {
+        padding: 0 2rem;
+        width: 50vw;
       }
     }
+    &Image {
+      @media screen and(min-width: 980px) {
+        max-width: 512px;
+        min-width: 512px;
+        max-height: 512px;
+        min-height: 512px;
+      }
+      max-width: 100%;
+      &Box {
+        display: flex;
+        justify-content: center;
+        @media screen and (max-width: 979px) {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    &Name {
+      margin-bottom: 2rem;
+      &Style {
+        font-size: 2rem;
+      }
+    }
+    &Comment {
+      background-color: #fff;
+      height: 100%;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /deep/ p {
+        word-break: break-all;
+        color: #222;
+        font-weight: bold;
+      }
+    }
+  }
+  &ATitle {
+    margin-bottom: 2rem;
+    &Text {
+      color: #acb6e5;
+      background: -webkit-linear-gradient(0deg, #acb6e5, #86fde8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+    }
+  }
+  &Rank {
+    margin-bottom: 2rem;
+    &Text {
+      color: #f13f79;
+      background: -webkit-linear-gradient(0deg, #f13f79, #ffc778);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+    }
+  }
+}
+
+.experienceValue {
+  height: 100%;
+  width: 75%;
+  background: -webkit-linear-gradient(-135deg, #e4a972, #9941d8);
+  &Bar {
+    height: 10px;
+    width: 100%;
+    background-color: #fff;
   }
 }
 </style>

@@ -8,7 +8,7 @@
         <h3>{{item.main_monster}}</h3>
         <h3>{{item.requester}}</h3>
         <p>{{item.memo}}</p>
-        <div v-for="detail in item.failure_condition" :key="detail">
+        <div v-for="(detail, index) in item.failure_condition" :key="index">
           <h2>{{detail.details}}</h2>
         </div>
       </div>
